@@ -3,7 +3,7 @@
 module App {
     'use strict';
 
-    var app = angular.module('app', [
+    var app = angular.module(Config.Application_Namespace, [
         // Angular modules
         // Custom modules
         // 3rd party modules
