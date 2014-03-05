@@ -1,19 +1,18 @@
 /// <reference path="_Typings.ts" />
+'use strict';
 
-module App {
-    'use strict';
+import config = require('config');
 
-    var app = angular.module(Config.Application_Namespace, [
-        // Angular modules
-        // Custom modules
-        // 3rd party modules
-    ]);
+var app = angular.module(config.Configuration.Application_Namespace, [
+    // Angular modules
+    // Custom modules
+    // 3rd party modules
+]);
 
-    app.config(()=> {
+app.config(()=> {
 
-    });
+});
 
-    app.run(()=> {
+app.run(()=> {
 
-    });
-}
+});
