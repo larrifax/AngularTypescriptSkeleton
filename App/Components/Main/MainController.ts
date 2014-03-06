@@ -1,12 +1,12 @@
-﻿/// <reference path="../_Typings.ts" />
+﻿/// <reference path="../../_Typings.ts" />
 
-module App.Main.Controllers {
+module Components.Main.Controllers {
     'use strict';
 
-    export class Main {
+    export class MainController {
         public static ID = "Main";
         public static injection(): any[] {
-            return ["$scope", Main];
+            return ["$scope", MainController];
         }
 
         public pageTitle: string;

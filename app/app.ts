@@ -16,7 +16,7 @@ module App {
         }
 
         private initializeLocalDependencies() {
-            var mainModule = new App.Main.MainModule();
+            var mainModule = new Components.Main.MainModule();
             this.dependencies.push(mainModule.ID);
         }
 
