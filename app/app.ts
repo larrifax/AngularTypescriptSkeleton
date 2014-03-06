@@ -3,18 +3,27 @@
 module App {
     'use strict';
 
-    var app = angular.module(App.Config.Configuration.Application_Namespace, [
-        // Angular modules
-        // Custom modules
-        App.Main.MainModule.ModuleId
-        // 3rd party modules
-    ]);
+    export class Application implements App.Common.IModule {
+        public ID: string;
+        public dependencies: string[];
+        public instance: ng.IModule;
 
-    //app.config(()=> {
+        constructor() {
+            this.dependencies = [];
 
-    //});
+            this.initializeLocalDependencies();
+            this.initializeInstance();
+        }
 
-    //app.run(()=> {
+        private initializeLocalDependencies() {
+            var mainModule = new App.Main.MainModule();
+            this.dependencies.push(mainModule.ID);
+        }
 
-    //});
+        private initializeInstance() {
+            this.instance = angular.module(App.Config.Configuration.Application_Namespace, this.dependencies);
+        }
+    }
+
+    var application = new Application();
 }

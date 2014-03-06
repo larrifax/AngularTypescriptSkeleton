@@ -3,15 +3,15 @@
 module App.Main {
     'use strict';
 
-    export class MainModule {
-        public static ModuleId = "App.Main";
-
+    export class MainModule extends App.Common.ModuleBase implements App.Common.IModule {
         constructor() {
-            var mainModule = angular.module(MainModule.ModuleId, []);
+            this.ID = "App.Main";
+            super();
+            this.wireFactories();
+        }
 
-            mainModule.controller(MainController.ID, MainController.injection());
+        private wireFactories() {
+            this.wire(App.Main.Controllers, this.instance.controller);
         }
     }
-
-    var main = new MainModule();
 }
