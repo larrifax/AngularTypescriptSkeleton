@@ -3,7 +3,7 @@
 module Components.Main {
     'use strict';
 
-    export class MainModule extends App.Common.ModuleBase implements App.Common.IModule {
+    export class Main extends App.Common.ModuleBase {
         constructor() {
             this.ID = "App.Main";
             super();
