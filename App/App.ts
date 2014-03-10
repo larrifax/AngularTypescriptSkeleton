@@ -3,28 +3,27 @@
 module App {
     'use strict';
 
-    export class Application implements App.Common.IModule {
+    export class Application extends App.Common.ModuleBase {
         public ID: string;
         public dependencies: string[];
         public instance: ng.IModule;
 
         constructor() {
+            super();
             this.dependencies = [];
 
             this.initializeLocalDependencies();
-            this.initializeInstance();
+            this.initializeModule(App.Config.Configuration.Application_Namespace, this.dependencies);
         }
 
         private initializeLocalDependencies() {
-            var mainModule = new Components.Main.Main();
-            this.dependencies.push(mainModule.ID);
-
-            var commonModule = new Components.Common.Common();
-            this.dependencies.push(commonModule.ID);
+            this.test(Components.Main.Main);
+            this.test(Components.Common.Common);
         }
 
-        private initializeInstance() {
-            this.instance = angular.module(App.Config.Configuration.Application_Namespace, this.dependencies);
+        private test(namespace: any) {
+            var testing = new namespace();
+            this.dependencies.push(namespace.ID);
         }
     }
 

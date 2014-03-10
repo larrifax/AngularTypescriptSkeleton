@@ -4,14 +4,12 @@ module Components.Common {
     'use strict';
 
     export class Common extends App.Common.ModuleBase {
-        constructor() {
-            this.ID = "App.Common";
-            super();
-            this.wireFactories();
-        }
+        static ID = "App.Common";
 
-        private wireFactories() {
-            this.wire(Components.Common.Services, this.instance.service);
+        constructor() {
+            super();
+            this.initializeModule(Common.ID);
+            this.initializeServices(Components.Common.Services);
         }
     }
 }

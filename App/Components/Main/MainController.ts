@@ -6,7 +6,7 @@ module Components.Main.Controllers {
     export class MainController {
         public static ID = "Main";
         public static injection(): any[] {
-            return ["$scope", "PageTitle", MainController];
+            return ["$scope", Components.Common.Services.PageTitleService.ID, MainController];
         }
 
         public pageTitle: string;

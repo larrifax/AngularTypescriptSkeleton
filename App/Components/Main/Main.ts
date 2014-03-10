@@ -4,15 +4,12 @@ module Components.Main {
     'use strict';
 
     export class Main extends App.Common.ModuleBase {
-        constructor() {
-            this.ID = "App.Main";
-            this.dependencies = ["App.Common"];
-            super();
-            this.wireFactories();
-        }
+        static ID = "App.Main";
 
-        private wireFactories() {
-            this.wire(Components.Main.Controllers, this.instance.controller);
+        constructor() {
+            super();
+            this.initializeModule(Main.ID, ["App.Common"]);
+            this.initializeControllers(Components.Main.Controllers);
         }
     }
 }

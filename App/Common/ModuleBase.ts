@@ -2,22 +2,34 @@ module App.Common {
     'use strict';
 
     export class ModuleBase implements App.Common.IModule {
-        public ID: string;
-        public dependencies: string[];
+        static ID: string;
+
         public instance: ng.IModule;
 
-        constructor() {
-            if (this.ID != null) {
-                this.instance = angular.module(this.ID, this.dependencies || []);
+        public initializeModule(id: string, dependencies: string[] = []) {
+            if (id != null) {
+                this.instance = angular.module(id, dependencies);
             } else {
                 throw new Error("The module is missing an ID");
             }
         }
 
-        wire(namespace: any, registrator: (string, Function) => ng.IModule, byPass?: (s) => boolean) {
+        public initializeControllers(namespace: any, except?: (name) => boolean) {
+            this.wire(namespace, this.instance.controller, except);
+        }
+
+        public initializeServices(namespace: any, except?: (name) => boolean) {
+            this.wire(namespace, this.instance.service, except);
+        }
+
+        public initializeFilters(namespace: any, except?: (name) => boolean) {
+            this.wire(namespace, this.instance.filter, except);
+        }
+
+        private wire(namespace: any, registrator: (string, Function) => ng.IModule, except?: (name) => boolean) {
             for (var key in namespace) {
                 try {
-                    if (byPass != null && byPass(key)) {
+                    if (except != null && except(key)) {
                         continue;
                     }
 
@@ -33,7 +45,7 @@ module App.Common {
         }
     }
 
-    export interface IInjectable {
+    interface IInjectable {
         ID: string;
         injection: () => any[];
     }
