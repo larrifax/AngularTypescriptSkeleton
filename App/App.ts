@@ -18,6 +18,9 @@ module App {
         private initializeLocalDependencies() {
             var mainModule = new Components.Main.Main();
             this.dependencies.push(mainModule.ID);
+
+            var commonModule = new Components.Common.Common();
+            this.dependencies.push(commonModule.ID);
         }
 
         private initializeInstance() {
