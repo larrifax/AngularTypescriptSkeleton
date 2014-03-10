@@ -11,7 +11,7 @@ module Components.Common {
         }
 
         private wireFactories() {
-            this.wire(Components.Common, this.instance.factory);
+            this.wire(Components.Common.Services, this.instance.service);
         }
     }
 }

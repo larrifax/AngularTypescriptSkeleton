@@ -14,5 +14,9 @@ module Components.Common.Services {
         }
 
         public title: string;
+
+        constructor() {
+            this.title = "A Test Title from PageTitleService";
+        }
     }
 }

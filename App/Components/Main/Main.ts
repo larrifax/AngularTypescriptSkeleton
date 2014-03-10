@@ -6,6 +6,7 @@ module Components.Main {
     export class Main extends App.Common.ModuleBase {
         constructor() {
             this.ID = "App.Main";
+            this.dependencies = ["App.Common"];
             super();
             this.wireFactories();
         }
