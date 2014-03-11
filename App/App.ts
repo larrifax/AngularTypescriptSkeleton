@@ -17,13 +17,25 @@ module App {
         }
 
         private initializeLocalDependencies() {
-            this.test(Components.Main.Main);
-            this.test(Components.Common.Common);
+            this.dependencies = this.initializeLocalModules(Components);
         }
 
-        private test(namespace: any) {
-            var testing = new namespace();
-            this.dependencies.push(namespace.ID);
+        private initializeLocalModules(namespace: any, except?: (name) => boolean) {
+            var dependencies = [];
+
+            var iterator = (key, value)=> {
+                var injector = <App.Common.IConstructableInjectable>value[key];
+                dependencies.push(this.prepareLocalModule(injector));  
+            };
+
+            this.enumerateNamespace(namespace, iterator, except);
+
+            return dependencies;
+        }
+
+        private prepareLocalModule(className: App.Common.IConstructableInjectable) {
+            var instance = new className();
+            return className.ID;
         }
     }
 

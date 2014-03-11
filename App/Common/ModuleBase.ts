@@ -27,17 +27,25 @@ module App.Common {
         }
 
         private wire(namespace: any, registrator: (string, Function) => ng.IModule, except?: (name) => boolean) {
+            var iterator = (key, value)=> {
+                var injector = <IInjectable>(value);
+
+                if (injector.ID && typeof injector.injection == "function") {
+                    registrator(injector.ID, injector.injection());
+                }
+            };
+
+            this.enumerateNamespace(namespace, iterator, except);
+        }
+
+        public enumerateNamespace(namespace: any, iterator: (key, value) => void, except?: (name) => boolean) {
             for (var key in namespace) {
                 try {
                     if (except != null && except(key)) {
                         continue;
                     }
 
-                    var injector = <IInjectable>(namespace[key]);
-
-                    if (injector.ID && typeof injector.injection == "function") {
-                        registrator(injector.ID, injector.injection());
-                    }
+                    iterator(key, namespace[key]);
                 } catch (e) {
                     console.log(e);
                 }
@@ -45,8 +53,12 @@ module App.Common {
         }
     }
 
-    interface IInjectable {
+    export interface IInjectable {
         ID: string;
         injection: () => any[];
+    }
+
+    export interface IConstructableInjectable extends IInjectable {
+        new(): IInjectable;
     }
 }
