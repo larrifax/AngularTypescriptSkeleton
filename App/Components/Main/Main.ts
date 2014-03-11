@@ -8,7 +8,7 @@ module Components.Main {
 
         constructor() {
             super();
-            this.initializeModule(Main.ID, ["App.Common"]);
+            this.initializeModule(Main.ID, [Components.Common.Common.ID]);
             this.initializeControllers(Components.Main.Controllers);
         }
     }

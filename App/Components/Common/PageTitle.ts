@@ -10,13 +10,23 @@ module Components.Common.Services {
     export class PageTitleService implements IPageTitleService {
         public static ID = "PageTitle";
         public static injection(): any[] {
-            return [PageTitleService];
+            return [StringService.ID, PageTitleService];
         }
 
-        public title: string;
+        private _title: string;
 
-        constructor() {
-            this.title = "A Test Title from PageTitleService";
+        constructor(private stringService: IStringService) {
+            this.title = null;
+        }
+
+        get title() {
+            return this._title;
+        }
+
+        set title(value: string) {
+            this._title = value == null || value === "" ?
+            App.Config.Configuration.Application_Title :
+            this.stringService.format("{0} - {1}", value, App.Config.Configuration.Application_Title);
         }
     }
 }
