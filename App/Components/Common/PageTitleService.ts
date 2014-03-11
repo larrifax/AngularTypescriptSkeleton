@@ -8,7 +8,7 @@ module Components.Common.Services {
     }
 
     export class PageTitleService implements IPageTitleService {
-        public static ID = "PageTitle";
+        public static ID = App.Common.InjectableHelper.createId(Common.ID, "PageTitleService");
         public static injection(): any[] {
             return [StringService.ID, PageTitleService];
         }

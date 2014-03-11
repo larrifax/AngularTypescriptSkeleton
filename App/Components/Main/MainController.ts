@@ -4,7 +4,7 @@ module Components.Main.Controllers {
     'use strict';
 
     export class MainController {
-        public static ID = "Main";
+        public static ID = App.Common.InjectableHelper.createId(Main.ID, "MainController");
         public static injection(): any[] {
             return ["$scope", Components.Common.Services.PageTitleService.ID, MainController];
         }
