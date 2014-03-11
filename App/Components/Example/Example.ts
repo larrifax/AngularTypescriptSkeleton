@@ -10,6 +10,7 @@ module Components.Example {
             super();
             this.initializeModule(Example.ID);
             this.initializeDirectives(Components.Example.Directives);
+            this.initializeFilters(Components.Example.Filters);
         }
     }
 }
