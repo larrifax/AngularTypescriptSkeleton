@@ -18,6 +18,10 @@ module App.Common {
             this.wire(namespace, this.instance.controller, except);
         }
 
+        public initializeDirectives(namespace: any, except?: (name)=> boolean) {
+            this.wire(namespace, this.instance.directive, except);
+        }
+
         public initializeServices(namespace: any, except?: (name) => boolean) {
             this.wire(namespace, this.instance.service, except);
         }
