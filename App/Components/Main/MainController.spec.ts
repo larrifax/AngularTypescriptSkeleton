@@ -3,6 +3,7 @@
 module Components.Main.Tests {
     'use strict';
 
+    import TestHelper = App.Common.TestHelper;
     import Main = Components.Main.Main;
     import Controllers = Components.Main.Controllers;
 
@@ -20,8 +21,7 @@ module Components.Main.Tests {
             });
 
             inject(($controller)=> {
-                var $scope = {};
-                var controller: Controllers.MainController = $controller(Controllers.MainController.ID, { $scope: $scope });
+                var controller = TestHelper.controllerInjector<Controllers.MainController>($controller, Controllers.MainController.ID);
 
                 expect(controller.pageTitle).toBe("Some Title");
             });
