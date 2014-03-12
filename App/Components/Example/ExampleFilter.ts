@@ -2,7 +2,7 @@ module Components.Example.Filters {
     'use strict';
 
     export class ExampleFilter {
-        public static ID = App.Common.InjectableHelper.createPrefixedId("Example");
+        public static ID = App.Common.InjectableHelper.createFilterId(Example.ID, "Example");
         public static injection(): any[] {
             return ["$log", ExampleFilter.factory];
         }

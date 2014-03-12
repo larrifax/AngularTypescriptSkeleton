@@ -2,7 +2,7 @@ module Components.Example.Directives {
     'use strict';
 
     export class ExampleDirective implements ng.IDirective {
-        public static ID = App.Common.InjectableHelper.createPrefixedId("Example");
+        public static ID = App.Common.InjectableHelper.createDirectiveId(Example.ID, "Example");
         public static injection(): any[] {
             return [() => new ExampleDirective()];
         }
