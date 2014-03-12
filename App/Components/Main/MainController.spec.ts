@@ -3,9 +3,12 @@
 module Components.Main.Tests {
     'use strict';
 
-    describe("MainController", () => {
+    import Main = Components.Main.Main;
+    import Controllers = Components.Main.Controllers;
 
-        beforeEach(module(Components.Main.Main.ID));
+    describe(Controllers.MainController.ID, () => {
+
+        beforeEach(module(Main.ID));
 
         it("should insert the correct content", () => {
             angular.mock.module(($provide)=> {
@@ -18,7 +21,7 @@ module Components.Main.Tests {
 
             inject(($controller)=> {
                 var $scope = {};
-                var controller: Components.Main.Controllers.MainController = $controller(Components.Main.Controllers.MainController.ID, { $scope: $scope });
+                var controller: Controllers.MainController = $controller(Controllers.MainController.ID, { $scope: $scope });
 
                 expect(controller.pageTitle).toBe("Some Title");
             });

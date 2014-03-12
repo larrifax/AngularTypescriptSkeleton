@@ -3,12 +3,15 @@
 module Components.Example.Tests {
     'use strict';
 
-    describe("ExampleFilter", () => {
+    import Example = Components.Example.Example;
+    import Filters = Components.Example.Filters;
 
-        beforeEach(module(Components.Example.Example.ID));
+    describe(Filters.ExampleFilter.ID, () => {
+
+        beforeEach(module(Example.ID));
 
         it("should return TEST when given Test", inject(($filter) => {
-            var filter = $filter(Components.Example.Filters.ExampleFilter.ID);
+            var filter = $filter(Filters.ExampleFilter.ID);
             expect(filter("Test")).toBe("TEST");
         }));
     });

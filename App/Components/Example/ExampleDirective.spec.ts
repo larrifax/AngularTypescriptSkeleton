@@ -3,9 +3,12 @@
 module Components.Example.Tests {
     'use strict';
 
-    describe("ExampleDirective", () => {
+    import Example = Components.Example.Example;
+    import Directives = Components.Example.Directives;
 
-        beforeEach(module(Components.Example.Example.ID));
+    describe(Directives.ExampleDirective.ID, () => {
+
+        beforeEach(module(Example.ID));
 
         it("should insert the correct content", inject(($compile, $rootScope) => {
             var element = $compile('<div data-example-example=""></div>')($rootScope);

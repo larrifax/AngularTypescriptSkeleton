@@ -4,17 +4,19 @@ module Components.Common.Tests {
     'use strict';
 
     import TestHelper = App.Common.TestHelper;
+    import Common = Components.Common.Common;
+    import Services = Components.Common.Services;
 
-    describe("StringService", () => {
+    describe(Services.StringService.ID, () => {
 
-        beforeEach(module(Components.Common.Common.ID));
+        beforeEach(module(Common.ID));
 
         describe("formatting function", () => {
 
-            var stringService: Components.Common.Services.StringService;
+            var stringService: Services.StringService;
 
             beforeEach(inject(($injector) => {
-                stringService = TestHelper.serviceInjector<Components.Common.Services.StringService>($injector, Components.Common.Services.StringService.ID);
+                stringService = TestHelper.serviceInjector<Services.StringService>($injector, Services.StringService.ID);
             }));
 
             it("should format instances of {number}", () => {
