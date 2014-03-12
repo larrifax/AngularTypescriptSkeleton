@@ -4,7 +4,7 @@ module Components.Main {
     'use strict';
 
     export class Main extends App.Common.ModuleBase {
-        static ID = "App.Main";
+        static ID = "Main";
 
         constructor() {
             super();
