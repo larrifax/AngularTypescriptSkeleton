@@ -21,6 +21,10 @@ module Components.Common.Tests {
                 expect(commonStringService.format("{0} {1}{2}", "Hello", "World", "!")).toBe("Hello World!");
             });
 
+            it("should support multiple instances of the same {number}", () => {
+                expect(commonStringService.format("{0} {0}", "Hello")).toBe("Hello Hello");
+            });
+
             it("should not replace instances of {number} if there is no argument for number", () => {
                 expect(commonStringService.format("{0} {1}", "Hello")).toBe("Hello {1}");
             });
