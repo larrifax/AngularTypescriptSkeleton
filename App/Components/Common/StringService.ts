@@ -8,7 +8,7 @@ module Components.Common.Services {
     }
 
     export class StringService implements IStringService {
-        public static ID = App.Common.InjectableHelper.createId(Common.ID, "StringService");
+        public static ID = App.Common.InjectableHelper.createServiceId(Common.ID, "String");
         public static injection(): any[] {
             return [StringService];
         }
