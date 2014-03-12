@@ -8,5 +8,9 @@ module App.Common {
                 return service;
             }]);
         }
+
+        static controllerInjector<T>(injector, controllerName: string, scope = {}): T {
+            return injector(controllerName, { $scope: scope });
+        }
     }
 }
