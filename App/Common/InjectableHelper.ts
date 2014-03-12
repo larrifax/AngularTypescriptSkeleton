@@ -14,7 +14,7 @@ module App.Common {
         }
 
         static createDirectiveId(prefix: string, name: string) {
-            return camelCase(prefix + name + "Directive");
+            return camelCase(prefix + name);
         }
 
         static createFilterId(prefix: string, name: string) {
