@@ -8,16 +8,23 @@ module Components.Common.Tests {
         beforeEach(module(Components.Common.Common.ID));
 
         describe("title", () => {
-            it("should initially be set to null", () => {
-                var commonPageTitleService;
 
+            var original;
+
+            beforeEach(()=> {
+                original = App.Config.Configuration.Application_Title;
+            });
+
+            afterEach(()=> {
+                App.Config.Configuration.Application_Title = original;
+            });
+
+            it("should initially be set to null", () => {
                 App.Config.Configuration.Application_Title = "Test";
 
-                inject((_commonPageTitleService_)=> {
-                    commonPageTitleService = _commonPageTitleService_;
+                inject((commonPageTitleService)=> {
+                    expect(commonPageTitleService.title).toBe("Test");
                 });
-
-                expect(commonPageTitleService.title).toBe("Test");
             });
 
             it("should be equal to application title when set to null", inject((commonPageTitleService) => {
