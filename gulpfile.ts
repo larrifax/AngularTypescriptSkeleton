@@ -1,4 +1,4 @@
-/// <reference path="Scripts/typings/node/node.d.ts" />
+declare var require;
 
 var gulp = require('gulp');
 var karma = require('gulp-karma');
