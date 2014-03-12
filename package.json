@@ -15,5 +15,10 @@
   "gitHead": "a657a98c7662cad183a3682e356f40a5b68b91d0",
   "bugs": {
     "url": "https://github.com/larrifax/AngularTypescriptSkeleton/issues"
+  },
+  "devDependencies": {
+    "gulp": "^3.5.5",
+    "karma": "^0.12.0",
+    "gulp-karma": "0.0.3"
   }
 }
