@@ -1,3 +1,4 @@
+/// <reference path="../Scripts/typings/angular-protractor/angular-protractor.d.ts" />
 /// <reference path="../Scripts/typings/angularjs/angular-mocks.d.ts" />
 /// <reference path="../Scripts/typings/jasmine/jasmine.d.ts" />
 /// <reference path="Components/Main/Main.ts" />
