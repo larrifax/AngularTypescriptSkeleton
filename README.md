@@ -1,7 +1,7 @@
 AngularTypescriptSkeleton
 =========================
 
-A skeleton for AngularJS using Typescript
+A skeleton for AngularJS using Typescript. Features automatic initialization of modules, controllers, directives, services and filters.
 
 Requirements:
 * Node.js with npm
